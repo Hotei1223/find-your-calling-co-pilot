@@ -2,7 +2,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Navbar from "./components/header/Navbar"
-import Hero from "./components/landing/hero"
 import { IdeaClients } from "./pages/IdeaClients"
 import ClientSummary from "./pages/ClientSummary"
 
