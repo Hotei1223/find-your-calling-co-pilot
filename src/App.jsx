@@ -2,8 +2,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Navbar from "./components/header/Navbar"
-import { IdeaClients } from "./pages/IdeaClients"
-import ClientSummary from "./pages/ClientSummary"
+import { ClarifyValue } from "./pages/ClarifyValue"
+import ValueResult from "./pages/ValueResult"
 
 function App() {
 
@@ -14,12 +14,12 @@ function App() {
       element : <Landing/>
     },
     {
-      path : "/idea-clients",
-      element : <IdeaClients/>
+      path : "/clarify-value",
+      element : <ClarifyValue/>
     },
     {
-      path : "/client-summary",
-      element : <ClientSummary/>
+      path : "/value-result",
+      element : <ValueResult/>
     },
 
   ])
