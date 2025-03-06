@@ -1,7 +1,7 @@
 const IdeaClientsQuestions = [
     {
         id: 1,
-        question: "Who is your specific audience? (e.g., new moms, small business owners, tech startups)",
+        question: "What free resource can you offer to attract potential clients?(e.g., webinars, templates, eBooks, checklists)",
         area: "h-30"
     },
 ];
@@ -9,7 +9,7 @@ const IdeaClientsQuestions = [
 const IdeaClientsQuestionstwo = [
     {
         id: 1,
-        question: "What is the most significant challenge or problem your target market is struggling with?",
+        question: "What is your first paid offer priced under $500 to convert leads into paying customers? (e.g., online courses, workshops, consultations)",
         area: "h-30"
     }
 ];
@@ -17,7 +17,15 @@ const IdeaClientsQuestionstwo = [
 const IdeaClientsQuestionsthree = [
     {
         id: 1,
-        question: "What specific solution do you provide to solve their problem? What makes your solution different or better than others?",
+        question: "What mid-range offer can you provide to deepen engagement with your clients? (e.g., group coaching, multi-session packages, advanced programs)",
+        area: "h-30"
+    }
+]
+
+const IdeaClientsQuestionsfour = [
+    {
+        id: 1,
+        question: "What premium offer will cater to clients seeking exclusive access or results? (e.g., VIP coaching, exclusive retreats, enterprise-level services)",
         area: "h-30"
     }
 ]

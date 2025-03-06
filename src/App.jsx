@@ -2,8 +2,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Navbar from "./components/header/Navbar"
-import { ClarifyValue } from "./pages/ClarifyValue"
-import ValueResult from "./pages/ValueResult"
+import { IdentifyValueLadder } from "./pages/IdentifyValueLadder"
+import ValueLadderResult from "./pages/ValueLadderResult"
 
 function App() {
 
@@ -14,12 +14,12 @@ function App() {
       element : <Landing/>
     },
     {
-      path : "/clarify-value",
-      element : <ClarifyValue/>
+      path : "/identify-value-ladder",
+      element : <IdentifyValueLadder/>
     },
     {
-      path : "/value-result",
-      element : <ValueResult/>
+      path : "/value-ladder-result",
+      element : <ValueLadderResult/>
     },
 
   ])
