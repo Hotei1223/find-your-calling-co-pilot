@@ -14,11 +14,11 @@
   );
   --primaryButtonHover: transparent;
   --primaryButtonBorder: 1px solid var(--primaryButton);
-  --primarybackground : url('./assets/IR_Value_Proposition_Agent.jpg');
+  --primarybackground : url('./assets/IR_Value_Ladder_Agent.jpg');
 }
 
 body {
-  background: var(--primarybackground), rgba(10, 10, 10, 0.1);
+  background: var(--primarybackground), rgba(10, 10, 10, 0.7);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
