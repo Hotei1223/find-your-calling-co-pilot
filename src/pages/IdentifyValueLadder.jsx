@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import jsPDF from 'jspdf';
 import { motion } from 'framer-motion'; // Import framer-motion
+import bannerImg from "../assets/Value-Ladder-Copilot-Banner.jpg";
 
 export const IdentifyValueLadder = () => {
     const [formData, setFormData] = useState({});
@@ -92,59 +93,59 @@ export const IdentifyValueLadder = () => {
 
     const handleDownloadPDF = () => {
         if (!response) return;
-      
+
         const doc = new jsPDF({
             unit: "pt",
             format: "a4",
             putOnlyUsedFonts: true,
         });
-      
+
         const PAGE = {
             width: 595.28,
             height: 841.89,
             marginX: 40,
             marginY: 60
         };
-      
+
         let y = PAGE.marginY;
         const maxWidth = PAGE.width - PAGE.marginX * 2;
-      
+
         const processLine = (text, options) => {
             const { fontSize = 12, isBold = false, isBullet = false } = options;
             const lineHeight = fontSize * 1.5;
-      
+
             doc.setFontSize(fontSize)
-               .setFont("helvetica", isBold ? "bold" : "normal");
-      
+                .setFont("helvetica", isBold ? "bold" : "normal");
+
             const cleanText = text.replace(/^\s*[#-*]+\s*/, "").replace(/\*\*/g, "");
             const indent = isBullet ? 15 : 0;
             const wrappedText = doc.splitTextToSize(cleanText, maxWidth - indent);
-      
+
             if (y + wrappedText.length * lineHeight > PAGE.height - PAGE.marginY) {
                 doc.addPage();
                 y = PAGE.marginY;
             }
-      
+
             if (isBullet && wrappedText.length > 0) {
                 doc.text("•", PAGE.marginX, y + 2);
                 wrappedText[0] = wrappedText[0].replace(/^•\s*/, "");
             }
-      
+
             doc.text(wrappedText, PAGE.marginX + (isBullet ? 10 : 0), y, {
                 indent: indent,
                 maxWidth: maxWidth - indent
             });
-      
+
             y += wrappedText.length * lineHeight + (isBullet ? 5 : 8);
         };
-      
+
         response.split("\n").forEach(line => {
             const trimmed = line.trim();
             if (!trimmed) {
                 y += 12;
                 return;
             }
-      
+
             if (trimmed.startsWith("# ")) {
                 processLine(trimmed, { fontSize: 22, isBold: true });
             } else if (trimmed.startsWith("## ")) {
@@ -157,7 +158,7 @@ export const IdentifyValueLadder = () => {
                 processLine(trimmed, { fontSize: 12 });
             }
         });
-      
+
         doc.save("Value_Ladder_Offers.pdf");
     };
 
@@ -209,17 +210,24 @@ export const IdentifyValueLadder = () => {
                         </svg>
                     </button>
                 </div>
-
+                <div className="flex justify-center items-center w-full h-56 relative rounded-2xl">
+                    {/* <div className="flex flex-col gap-4 w-full h-full bg-black bg-opacity-50 rounded-2xl absolute z-10">
+                        <h2 className="text-white text-2xl font-bold leading-[25px] text-center top-[45%] absolute z-20 left-[30%]">
+                        </h2>
+                        </div> */}
+                    <img src={bannerImg} className="w-full h-full object-cover rounded-2xl object-center" />
+                </div>
+            
                 {/* Title */}
                 <motion.h2
-                    className="text-white text-2xl font-bold leading-[25px] text-center"
+                    className="text-white text-xl font-bold leading-[25px]"
                     variants={fadeInVariants}
                 >
                     {loading
                         ? "Generating your value ladder..."
                         : response
-                        ? "Your Value Ladder Offers"
-                        : "Identify Your Value Ladder Offers"}
+                            ? "Your Value Ladder Offers"
+                            : "Answer these questions to identify your value ladder."}
                 </motion.h2>
 
                 {/* Loading Shimmer */}
