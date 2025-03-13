@@ -284,7 +284,7 @@ export const IdentifyValueLadder = () => {
                                 onClick={handleSubmit}
                                 className="min-w-[120px] btn-primary h-10 px-6 rounded-2xl text-white text-sm font-medium hover:scale-105 transition-transform duration-200"
                             >
-                                Generate Value Ladder
+                                Generate My Value Ladder
                             </button>
                         </div>
                     </motion.div>
@@ -308,7 +308,7 @@ export const IdentifyValueLadder = () => {
                                 }}
                             />
                         </div>
-                        <div className="w-full flex justify-center mt-4 space-x-2">
+                        <div className="w-full flex justify-center mt-4 space-x-6">
                             <button
                                 onClick={handleDownloadPDF}
                                 className="btn-primary h-10 px-6 rounded-2xl text-white text-sm font-medium hover:scale-105 transition-transform duration-200"
