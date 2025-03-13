@@ -298,12 +298,12 @@ export const IdentifyValueLadder = () => {
                                 remarkPlugins={[remarkGfm]}
                                 children={response}
                                 components={{
-                                    p: ({ children }) => <p className="text-white">{children}</p>,
-                                    h1: ({ children }) => <h1 className="text-green-500 font-bold">{children}</h1>,
-                                    h2: ({ children }) => <h2 className="text-red-500 font-bold">{children}</h2>,
-                                    h3: ({ children }) => <h3 className="text-blue-600 font-bold">{children}</h3>,
-                                    ul: ({ children }) => <ul className="list-disc ml-5 text-white">{children}</ul>,
-                                    ol: ({ children }) => <ol className="list-decimal ml-5 text-white">{children}</ol>,
+                                    p: ({ children }) => <p className="text-white mb-4">{children}</p>, // Add margin to paragraphs
+                                    h1: ({ children }) => <h1 className="text-green-500 font-bold mt-6 mb-4">{children}</h1>, // Add margin to headings
+                                    h2: ({ children }) => <h2 className="text-red-500 font-bold mt-6 mb-4">{children}</h2>,
+                                    h3: ({ children }) => <h3 className="text-blue-600 font-bold mt-6 mb-4">{children}</h3>,
+                                    ul: ({ children }) => <ul className="list-disc ml-5 text-white mb-4">{children}</ul>, // Add margin to lists
+                                    ol: ({ children }) => <ol className="list-decimal ml-5 text-white mb-4">{children}</ol>, // Add margin to lists
                                     li: ({ children }) => <li className="text-white">{children}</li>,
                                 }}
                             />
