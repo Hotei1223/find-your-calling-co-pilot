@@ -220,13 +220,13 @@ export const IdentifyValueLadder = () => {
             
                 {/* Title */}
                 <motion.h2
-                    className="text-white text-xl font-bold leading-[25px]"
+                    className="text-white text-xl font-bold leading-[25px] text-center"
                     variants={fadeInVariants}
                 >
                     {loading
-                        ? "Generating your value ladder..."
+                        ? " Give us a moment, we're putting your Value Ladder together....."
                         : response
-                            ? "Your Value Ladder Offers"
+                            ? " Your Value Ladder Strategy"
                             : "Answer these questions to identify your value ladder."}
                 </motion.h2>
 
@@ -340,13 +340,13 @@ export const IdentifyValueLadder = () => {
                             <div className="flex justify-end space-x-4">
                                 <button
                                     onClick={() => setShowModal(false)}
-                                    className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors duration-200"
+                                    className="px-4 py-2 bg-gray-600 rounded-2xl text-white hover:bg-gray-700 transition-colors duration-200"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleProceedStartOver}
-                                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors duration-200"
+                                    className="px-4 py-2 bg-red-600 text-white rounded-2xl hover:bg-red-700 transition-colors duration-200"
                                 >
                                     Proceed
                                 </button>
