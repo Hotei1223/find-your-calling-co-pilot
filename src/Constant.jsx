@@ -1,71 +1,69 @@
 const IdeaClientsQuestions = [
     {
         id: 1,
-        question: "Which category best describes your business: B2C (business to consumer) or B2B (business to business)?",
+        question: "1. What You Love (Passions & Interests)",
+        desc: [
+            "- What topics, activities, or causes excite you the most?",
+            "- What could you spend hours talking or learning about without getting bored?"
+        ],
         area: "h-30"
     },
     {
         id: 2,
-        question: "What can you offer for free that would attract your ideal clients and start building your database?",
+        question: "2. What You Are Good At (Skills & Strengths)",
+        desc: [
+            "- What skills have you developed over the years, either professionally or personally?",
+            "- What do people often ask you for advice or help with?"
+        ],
         area: "h-30"
     },
     {
         id: 3,
-        question: "What can you create as your first paid offer (under $500 for B2C or under $5,000 for B2B) that would be an easy 'yes' for potential clients?",
+        question: "3. What Industries Interest You?",
+        desc: [
+            "- Are there any industries or fields that seem exciting or interesting to you?",
+            "- (Examples: Technology, Health & Wellness, Education, Arts & Creativity, Finance, Sustainability, Entertainment, Personal Development, etc.)"
+        ],
         area: "h-30"
     },
     {
         id: 4,
-        question: "What mid-ticket offer can you develop ($500-$2,000 for B2C or $5,000-$20,000 for B2B) that builds on your small offer?",
+        question: "4. What Problems in the World Do You Care About Solving?",
+        desc: [
+            "- What issues, struggles, or challenges do you feel passionate about addressing?",
+            "- (Examples: Helping people manage stress, improving education, reducing waste, supporting mental health, making businesses more efficient, etc.)"
+           
+        ],
         area: "h-30"
     },
     {
         id: 5,
-        question: "What will be your main offer ($2,000-$10,000 for B2C or $20,000-$100,000 for B2B) that delivers your core solution?",
+        question: "5. What Personal Challenges or Transformations Have You Experienced?",
+        desc: [
+            "- Have you overcome any personal struggles or major life changes that could help others?",
+            " (Examples: Career transitions, health improvements, confidence building, financial freedom, work-life balance, etc.)"
+        ],
         area: "h-30"
     },
     {
         id: 6,
-        question: "What premium package can you create ($10,000+ for B2C or $100,000+ for B2B) for clients who want the highest level of service?",
+        question: "6. What Kind of Work Do You Enjoy?",
+        desc: [
+            "- Do you prefer working alone, collaborating with others, leading teams, or using technology?",
+            "- What work environment makes you feel the most energized and fulfilled?"
+        ],
         area: "h-30"
     },
     {
         id: 7,
-        question: "Who is your target market and what are their high values that your offers should connect with?",
+        question: "7. What Kind of Impact Do You Want to Have on People?",
+        desc: [
+            "- When you think about helping others, what kind of difference do you want to make?",
+            " (Examples: Inspiring creativity, helping people become more confident, simplifying their lives, improving health, making work more enjoyable, etc.)"
+        ],
         area: "h-30"
     },
-    {
-        id: 8,
-        question: "What system can you develop that makes your offers credible and demonstrates how clients will achieve results?",
-        area: "h-30"
-    },
-    {
-        id: 9,
-        question: "What social proof can you include with your offers (testimonials, success stories, credentials)?",
-        area: "h-30"
-    },
-    {
-        id: 10,
-        question: "What mid-ticket offer can you develop ($500-$2,000 for B2C or $5,000-$20,000 for B2B) that builds on your small offer?",
-        area: "h-30"
-    },
-    {
-        id: 11,
-        question: "Are you structuring your offerings in the right order based on your business stage (one-on-one → group experiences → products)?",
-        options: [
-            "Free → Small → High ticket (with mid-ticket as downsell)",
-            "Free → High ticket (with mid-ticket as downsell)",
-            "Free → Mid-ticket → High ticket (with small offer as downsell)"
-          ],
-        area: "h-30"
-    },
-    {
-        id: 12,
-        question: "What specific problem does each step in your customer journey solve completely?",
-        area: "h-30"
-    }
-  
-
 ];
+
 
 export { IdeaClientsQuestions };
