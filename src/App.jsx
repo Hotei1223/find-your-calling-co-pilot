@@ -2,8 +2,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Navbar from "./components/header/Navbar"
-import { IdentifyValueLadder } from "./pages/IdentifyValueLadder"
-import ValueLadderResult from "./pages/ValueLadderResult"
+import { FindYourCallingPaths } from "./pages/FindYourCallingPaths"
+import FindYourCallingPathsResult from "./pages/FindYourCallingPathsResult"
 
 function App() {
 
@@ -14,12 +14,12 @@ function App() {
       element : <Landing/>
     },
     {
-      path : "/identify-value-ladder",
-      element : <IdentifyValueLadder/>
+      path : "/identify-your-calling",
+      element : <FindYourCallingPaths/>
     },
     {
-      path : "/value-ladder-result",
-      element : <ValueLadderResult/>
+      path : "/find-your-calling-result",
+      element : <FindYourCallingPathsResult/>
     },
 
   ])

@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 
-const ValueLadderResult = () => {
+const FindYourCallingPathsResult = () => {
     return (
         <div className="w-full flex justify-center items-start">
             <div className="md:max-w-[900px] md:w-[800px] max-w-[768px] space-y-4 my-8 md:mb-8">
@@ -119,4 +119,4 @@ const ValueLadderResult = () => {
     )
 }
 
-export default ValueLadderResult
+export default FindYourCallingPathsResult

@@ -7,9 +7,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import jsPDF from 'jspdf';
 import { motion } from 'framer-motion'; // Import framer-motion
-import bannerImg from "../assets/Value-Ladder-Copilot-Banner.jpg";
+import bannerImg from "../assets/Find_Your_Calling_banner.png";
 
-export const IdentifyValueLadder = () => {
+export const FindYourCallingPaths = () => {
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -224,10 +224,10 @@ export const IdentifyValueLadder = () => {
                     variants={fadeInVariants}
                 >
                     {loading
-                        ? " Give us a moment, we're putting your Value Ladder together....."
+                        ? " Give us a moment, we're putting your calling together....."
                         : response
-                            ? " Your Value Ladder Strategy"
-                            : "Answer these questions to identify your value ladder."}
+                            ? " Your Calling Strategy"
+                            : "Answer these questions to find your calling."}
                 </motion.h2>
 
                 {/* Loading Shimmer */}
@@ -284,7 +284,7 @@ export const IdentifyValueLadder = () => {
                                 onClick={handleSubmit}
                                 className="min-w-[120px] btn-primary h-10 px-6 rounded-2xl text-white text-sm font-medium hover:scale-105 transition-transform duration-200"
                             >
-                                Generate My Value Ladder
+                                Generate My Calling
                             </button>
                         </div>
                     </motion.div>
@@ -359,4 +359,4 @@ export const IdentifyValueLadder = () => {
     );
 };
 
-export default IdentifyValueLadder;
+export default FindYourCallingPaths;

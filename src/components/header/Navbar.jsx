@@ -7,7 +7,7 @@ const Navbar = () => {
             </div></a>
             <div>
                 <button className="min-w-[70px] md:min-w-[120px] btn-secondary h-10 p-4 rounded-2xl cursor-pointer border-[1px] border-transparent inline-flex justify-center items-center text-white text-sm font-medium leading-[25px] gap-2.5">
-                    Logout
+                    Profile
                 </button>
             </div>
         </nav>
