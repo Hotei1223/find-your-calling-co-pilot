@@ -12,8 +12,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.10",
     "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.4.11",
+    "js-cookie": "^3.0.5",
     "jspdf": "^3.0.0",
+    "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
