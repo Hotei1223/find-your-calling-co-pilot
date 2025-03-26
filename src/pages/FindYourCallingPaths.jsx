@@ -48,11 +48,13 @@ export const FindYourCallingPaths = () => {
 
   useEffect(() => {
       const fetchUserData = async () => {
-          // Check if email is available and token has been checked
+
           if (email && tokenChecked) {
               setLoading(true);
               try {
-                  const response = await axios.get(`${BASE_API_URL}/user/${email}`);
+                  const response = await axios.get(`${BASE_API_URL}/user/${email}`,{
+                    withCredentials: true, 
+                  });
                   if (response.data) {
                       setFormData(response.data.formData);
                       setResponse(response.data.gptResponse || null);
@@ -64,7 +66,6 @@ export const FindYourCallingPaths = () => {
               }
           }
       };
-
       fetchUserData();
   }, [email, tokenChecked]); 
 
@@ -116,7 +117,9 @@ export const FindYourCallingPaths = () => {
       const res = await axios.post(`${BASE_API_URL}`, {
         formData: formattedData,
         email,
-      });
+      },{
+          withCredentials: true,
+        });
 
       setResponse(res.data.answer);
     } catch (error) {
@@ -133,7 +136,9 @@ export const FindYourCallingPaths = () => {
     setShowModal(false);
     setLoading(true);
     try {
-      await axios.delete(`${BASE_API_URL}/user/${email}`);
+      await axios.delete(`${BASE_API_URL}/user/${email}`, {
+        withCredentials: true, 
+      });
       setFormData({});
       setResponse(null);
       setErrors({});
