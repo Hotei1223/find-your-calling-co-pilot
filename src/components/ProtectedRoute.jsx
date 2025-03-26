@@ -1,62 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { getAuthToken } from '../../utils/auth';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
+  const navigate = useNavigate();
 
-  // Verify token with backend API using Axios
-  const verifyToken = async (token) => {
+
+  const verifyToken = async () => {
     try {
-      const response = await axios.get('https://api.testir.xyz/server3/api/auth/verifytoken', {
-        headers: {
-          Authorization: `${token}`,
-        },
-        withCredentials: true,
-      });
+      const response = await fetch(
+        "https://api.testir.xyz/server3/api/auth/verifytoken",
+        {
+          method: "GET",
+          credentials: "include", 
+        }
+      );
 
-      if (response.status === 200) {
-        console.log('Token verified:', response.data);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Token verified:", data);
         setIsAuthenticated(true);
-        return
+      } else {
+        console.warn("Token verification failed:", response.statusText);
+        redirectToAuth(); 
       }
     } catch (error) {
-      console.warn('Token verification failed:', error.response?.data || error.message);
-      setIsAuthenticated(false);
-      setRedirecting(true);
-      handleRedirect();
+      console.warn("Token verification error:", error.message);
+      redirectToAuth(); 
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle redirect to login page
-  const handleRedirect = () => {
+
+  const redirectToAuth = () => {
+    setRedirecting(true);
     const redirectUrl = encodeURIComponent(window.location.href);
     setTimeout(() => {
       window.location.href = `https://testir.xyz/auth?redirectTo=${redirectUrl}`;
-    }, 2000);
+    }, 1500);
   };
 
-  // Check token and verify it on page load
-  useEffect(() => {
-    const token = getAuthToken();
 
-    if (token) {
-      verifyToken(token);
-    } else {
-      setIsAuthenticated(false);
-      setRedirecting(true);
-      handleRedirect();
-      setLoading(false);
-    }
+  useEffect(() => {
+    verifyToken();
   }, []);
+
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
 
   if (!isAuthenticated) {
     if (redirecting) {
@@ -73,6 +69,7 @@ const ProtectedRoute = ({ children }) => {
     }
     return null;
   }
+
 
   return children;
 };
