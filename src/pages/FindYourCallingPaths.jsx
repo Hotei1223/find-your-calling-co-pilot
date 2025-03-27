@@ -23,51 +23,66 @@ export const FindYourCallingPaths = () => {
   const [tokenChecked, setTokenChecked] = useState(false);
 
   useEffect(() => {
-      const getTokenAndSetEmail = async () => {
-          const token = getAuthToken();
 
-          if (token) {
-              try {
-                  const decodedToken = jwtDecode(token);
-                  const extractedEmail = decodedToken.email || decodedToken.sub;
-                  setEmail(extractedEmail);
-                //   console.log("eml:", extractedEmail);
-              } catch (error) {
-                  console.error("Error decoding token:", error);
-                 
-              } finally {
-                  setTokenChecked(true); 
-              }
-          } else {
-              setTokenChecked(true); 
+        const getTokenAndSetEmail = async () => {
+          try {
+            // Call the verify-token API and get the user information
+            const response = await axios.get("https://api.testir.xyz/server3/api/auth/verifytoken", {
+              withCredentials: true,  // Ensure cookies are sent
+            });
+      
+            if (response.data && response.data.user) {
+              const extractedEmail = response.data.user.email;
+              setEmail(extractedEmail);  // Set the email state
+              console.log("Email extracted from token:", extractedEmail);
+            }
+          } catch (error) {
+            console.error("Error verifying token:", error.response?.data?.msg || error);
+          } finally {
+            setTokenChecked(true);  // Proceed regardless of token validity
           }
-      };
+        };
 
       getTokenAndSetEmail();
   }, []);
 
-  useEffect(() => {
-      const fetchUserData = async () => {
 
-          if (email && tokenChecked) {
-              setLoading(true);
-              try {
-                  const response = await axios.get(`${BASE_API_URL}/user/${email}`,{
-                    withCredentials: true, 
-                  });
-                  if (response.data) {
-                      setFormData(response.data.formData);
-                      setResponse(response.data.gptResponse || null);
-                  }
-              } catch (error) {
-                  console.error("Error fetching user data:", error);
-              } finally {
-                  setLoading(false);
-              }
-          }
-      };
-      fetchUserData();
-  }, [email, tokenChecked]); 
+  const fetchUserData = async () => {
+    if (email && tokenChecked) {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${BASE_API_URL}/user/${email}`, {
+          withCredentials: true,
+        });
+
+        if (response.data) {
+          // Initialize formData with the fetched answers
+          const fetchedFormData = {};
+
+          // Assuming response.data.qaPairs contains questions and answers
+          response.data.qaPairs?.forEach((qa) => {
+            fetchedFormData[qa.questionId] = qa.answer;
+          });
+
+          // Set the formData (this triggers re-render)
+          setFormData((prevData) => {
+            return { ...prevData, ...fetchedFormData };
+          });
+
+          // Optionally, set the GPT response (if any)
+          setResponse(response.data.gptResponse || null);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+  useEffect(() => {
+    console.log("i am here")
+    fetchUserData();
+  }, [email, tokenChecked]);
 
   const handleback = () => {
     window.history.back();
@@ -105,14 +120,21 @@ export const FindYourCallingPaths = () => {
 
     setLoading(true);
     try {
-      const allQuestions = [...IdeaClientsQuestions];
-
+      const allQuestions = [
+        ...IdeaClientsQuestions,
+      ];
+      
+      console.log(allQuestions); 
+    
       const formattedData = allQuestions.map((q) => ({
         questionId: q.id,
-        category: q.category,
+        category: q.category || "Unknown", 
         question: q.question,
-        answer: formData[q.id] ? formData[q.id].trim() : "",
+        answer: formData[q.id]?.toString().trim() || "", 
       }));
+    
+      console.log(formattedData);
+
 
       const res = await axios.post(`${BASE_API_URL}`, {
         formData: formattedData,
@@ -142,6 +164,7 @@ export const FindYourCallingPaths = () => {
       setFormData({});
       setResponse(null);
       setErrors({});
+      fetchUserData();
     } catch (error) {
       console.error("Error clearing data:", error);
     } finally {
